@@ -1,6 +1,6 @@
 # Minesweeper Game
 
-A classic Minesweeper implementation using Python and Tkinter.
+A classic Minesweeper implementation using Python.
 
 ## Features
 
