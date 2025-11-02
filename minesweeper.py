@@ -17,15 +17,22 @@ class MinesweeperGame:
         self.visible_board = [['U' for _ in range(width)] for _ in range(height)]
         self.game_over = False
         self.win = False
+        self.first_move = True  # Add this line to track first move
         self._place_mines()
         self._calculate_numbers()
 
-    def _place_mines(self):
-        """Randomly places mines on the board."""
+    def _place_mines(self, first_x=None, first_y=None):
+        """Randomly places mines on the board, avoiding the first clicked position."""
         mines_placed = 0
         while mines_placed < self.num_mines:
             x = random.randint(0, self.height - 1)
             y = random.randint(0, self.width - 1)
+            
+            # Don't place mine at first click or its surrounding cells
+            if first_x is not None and first_y is not None:
+                if (abs(x - first_x) <= 1 and abs(y - first_y) <= 1):
+                    continue
+                
             if self.board[x][y] != -1:
                 self.board[x][y] = -1
                 mines_placed += 1
@@ -65,6 +72,12 @@ class MinesweeperGame:
         """
         if self.visible_board[x][y] != 'U':
             return None # Can't reveal a flagged or already-revealed cell
+
+        # Handle first move
+        if self.first_move:
+            self._place_mines(x, y)
+            self._calculate_numbers()
+            self.first_move = False
 
         if self.board[x][y] == -1:
             self.game_over = True
