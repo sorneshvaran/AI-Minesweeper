@@ -5,27 +5,22 @@ A classic Minesweeper implementation using Python and Tkinter.
 ## Features
 
 - Full graphical user interface
-- Three difficulty levels
 - Left-click to reveal cells
 - Right-click to place/remove flags
 - Flood-fill revealing of empty cells
 - Color-coded numbers
-- Win/lose detection
+- Win/lose detection with emoji feedback
+- Reset game functionality
 
 ## Controls
 
 - **Left Click**: Reveal a cell
-- **Right Click**: Place/remove a flag
+- **Right Click**: Place/remove a flag 🚩
 - **Reset Button**: Start a new game
 
-## Difficulty Settings
+## Game Configuration
 
-The game comes with three preset difficulty levels:
-
-- **Easy**: 9x9 grid with 10 mines
-- **Medium**: 16x16 grid with 40 mines
-
-To change the difficulty, modify the following constants in `minesweeper.py`:
+The game runs on a 9x9 grid with 10 mines. To modify these settings, you can adjust the following constants in `minesweeper.py`:
 
 ```python
 GAME_WIDTH = 9    # Width of the grid
@@ -58,7 +53,3 @@ The game is split into two main classes:
 
 - `MinesweeperGame`: Handles game logic and state
 - `MinesweeperApp`: Manages the GUI and user interactions
-
-## License
-
-This project is available as open source under the terms of the MIT License.
